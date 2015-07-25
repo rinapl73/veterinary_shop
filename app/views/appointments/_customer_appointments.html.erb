@@ -1,0 +1,26 @@
+<br>
+<h1>Appointments</h1>
+<table class="table table-bordered table-hover" >
+  <thead>
+    <tr>
+      <th>Appointment Date</th>
+      <th>Pet Name</th>
+      <th>Doctor</th>
+      <th>Visit Reason</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.appointment_date %></td>
+        <td><%= appointment.pet_name %></td>
+        <td><%= appointment.doctor_name %></td>
+        <td><%= appointment.visit_reason %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

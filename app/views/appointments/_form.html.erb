@@ -1,0 +1,80 @@
+<%= form_for(@appointment) do |f| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+      <% @appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :customer_name %><br>
+    <%= f.text_field :customer_name, value: @appointment.owner_name, class: "form-control require"%>
+  </div>
+
+   <div class="form-group">
+    <%= f.label "Customer Email" %><br>
+    <%= f.email_field :customer_email, value: @appointment.owner_email, class: "form-control require"%>
+  </div>
+
+  <% if current_user.role != "doctor"%>
+  <div class="form-group">
+    <%= f.label "Doctor" %><br>
+    <%= f.select :doctor_id, @doctors,  { prompt: "Please Select", class: "form-control" } %>
+  </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :pet_name %><br>
+    <%= f.text_field :pet_name, class: "form-control require"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :appointment_date %><br>
+    <%= f.date_select :appointment_date, class: "form-control" %>
+  </div>
+
+  <% if current_user.role == "doctor"%>
+     <div class="form-group">
+      <%= f.label :last_appointment_date %><br>
+      <%= f.date_select :last_appointment_date, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :pet_type %><br>
+      <%= f.select :pet_type, ["dog", "cat", "bird"], { prompt: "Please Select", class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :pet_breed %><br>
+      <%= f.text_field :pet_breed, class: "form-control require" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :pet_age %><br>
+      <%= f.date_select :pet_age, class: "form-control require" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :weight %><br>
+      <%= f.text_field :weight, class: "form-control require" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :doctor_comment %><br>
+      <%= f.text_area :doctor_comment, class: "form-control" %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :visit_reason %><br>
+    <%= f.text_area :visit_reason, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Appointment", class: "btn btn-lg btn-primary"%>
+  </div>
+<% end %>

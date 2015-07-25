@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  veterinary_patient_id: 1
+  appointment_date: 2015-07-24
+  pet_name: MyString
+  doctor_id: 1
+  pet_type: MyString
+  pet_breed: MyString
+  pet_age: 2015-07-24
+  weight: 1.5
+  customer_id: 1
+  visit_reason: MyString
+  doctor_comment: MyString
+
+two:
+  veterinary_patient_id: 1
+  appointment_date: 2015-07-24
+  pet_name: MyString
+  doctor_id: 1
+  pet_type: MyString
+  pet_breed: MyString
+  pet_age: 2015-07-24
+  weight: 1.5
+  customer_id: 1
+  visit_reason: MyString
+  doctor_comment: MyString

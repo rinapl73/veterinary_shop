@@ -1,0 +1,1 @@
+json.extract! @appointment, :id, :veterinary_patient_id, :appointment_date, :pet_name, :doctor_id, :pet_type, :pet_breed, :pet_age, :weight, :customer_id, :visit_reason, :doctor_comment, :created_at, :updated_at

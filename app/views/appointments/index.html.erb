@@ -1,0 +1,58 @@
+<br>
+<p id="notice"><%= notice %></p>
+<div class="pull-right">
+  <% if current_user.role != "doctor"%>
+    <%= link_to 'New Appointment', new_appointment_path, class: "btn btn-sm btn-primary" %>
+  <% end%>
+  <%= link_to 'Back', dashboard_path, class: "btn btn-sm btn-default" %>
+</div>
+<h1>Appointments</h1>
+
+<table class="table table-bordered table-hover" >
+  <thead>
+    <tr>
+      <th>Appointment date</th>
+      <th>Pet name</th>
+      <th>Doctor</th>
+      <% if current_user.role == "doctor"%>
+        <th>Pet type</th>
+        <th>Pet breed</th>
+        <th>Pet age</th>
+        <th>Weight</th>
+        <th>Doctor comment</th>
+      <% end %>
+      <th>Customer</th>
+      <th>Visit reason</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.appointment_date %></td>
+        <td><%= appointment.pet_name %></td>
+        <td><%= appointment.doctor_name %></td>
+        <% if current_user.role == "doctor"%>
+          <td><%= appointment.pet_type %></td>
+          <td><%= appointment.pet_breed %></td>
+          <td><%= appointment.pet_age %></td>
+          <td><%= appointment.weight %></td>
+          <td><%= appointment.doctor_comment %></td>
+        <% end %>
+        <td><%= appointment.owner_name %></td>
+        <td><%= appointment.visit_reason %></td>
+        <td><%= link_to 'Show', appointment %></td>
+        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
+
+        <% if current_user.role != "doctor"%>
+        <td><%= link_to 'Send Reminder', reminder_path %></td>
+        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

@@ -1,0 +1,66 @@
+<br>
+<div class="well col-sm-8 col-sm-offset-2">
+
+<!-- <p id="notice"><%#= notice %></p> -->
+
+
+<p>
+  <strong>Appointment date:</strong>
+  <%= @appointment.appointment_date %>
+</p>
+
+<p>
+  <strong>Doctor:</strong>
+  <%= @appointment.doctor_name %>
+</p>
+
+<p>
+  <strong>Owner Name:</strong>
+  <%= @appointment.owner_name %>
+</p>
+
+
+<p>
+  <strong>Pet name:</strong>
+  <%= @appointment.pet_name %>
+</p>
+
+
+
+<% if current_user.role == "doctor"%>
+
+  <p>
+    <strong>Pet type:</strong>
+    <%= @appointment.pet_type %>
+  </p>
+
+  <p>
+    <strong>Pet breed:</strong>
+    <%= @appointment.pet_breed %>
+  </p>
+
+  <p>
+    <strong>Pet age:</strong>
+    <%= @appointment.pet_age %>
+  </p>
+
+  <p>
+    <strong>Weight:</strong>
+    <%= @appointment.weight %>
+  </p>
+
+  <p>
+    <strong>Doctor comment:</strong>
+    <%= @appointment.doctor_comment %>
+  </p>
+<% end %>
+
+<p>
+  <strong>Visit reason:</strong>
+  <%= @appointment.visit_reason %>
+</p>
+
+
+<%= link_to 'Edit', edit_appointment_path(@appointment), class: "btn btn-sm btn-primary" %>
+<%= link_to 'Back', appointments_path, class: "btn btn-sm btn-default " %>
+</div>
